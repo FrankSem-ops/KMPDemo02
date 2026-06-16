@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -8,6 +9,11 @@ plugins {
     alias(libs.plugins.composeCompiler)
 }
 
+compose.resources {
+    packageOfResClass = "com.sem.kmp01.resources"
+}
+
+@OptIn(ExperimentalSwiftExportDsl::class)
 kotlin {
     listOf(
         iosArm64(),
@@ -16,6 +22,14 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+        }
+    }
+
+    swiftExport {
+        moduleName = "Shared"
+        flattenPackage = "com.sem.kmp01.swiftdemo"
+        configure {
+            freeCompilerArgs.add("-Xexpect-actual-classes")
         }
     }
     
@@ -51,6 +65,8 @@ kotlin {
             dependencies {
                 api(projects.core)
                 implementation(libs.compose.runtime)
+                implementation(libs.compose.components.resources)
+                implementation(libs.kotlinx.coroutines.core)
             }
         }
         val iosMain by creating {
@@ -72,7 +88,6 @@ kotlin {
                 implementation(libs.compose.foundation)
                 implementation(libs.compose.material3)
                 implementation(libs.compose.ui)
-                implementation(libs.compose.components.resources)
                 implementation(libs.compose.uiToolingPreview)
                 implementation(libs.androidx.lifecycle.viewmodelCompose)
                 implementation(libs.androidx.lifecycle.runtimeCompose)

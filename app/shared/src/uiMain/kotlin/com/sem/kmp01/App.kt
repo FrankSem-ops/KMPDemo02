@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.resources.painterResource
 
-import kmp01.app.shared.generated.resources.Res
-import kmp01.app.shared.generated.resources.compose_multiplatform
+import com.sem.kmp01.resources.Res
+import com.sem.kmp01.resources.compose_multiplatform
 
 @Composable
 @Preview
@@ -36,7 +36,7 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+                Text("点我看看")
             }
             AnimatedVisibility(showContent) {
                 val greeting = remember { Greeting().greet() }
@@ -45,7 +45,7 @@ fun App() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+                    Text("Compose 展示：$greeting")
                 }
             }
         }
