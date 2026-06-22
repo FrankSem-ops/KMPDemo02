@@ -68,12 +68,6 @@ kotlin {
                 implementation(libs.kotlinx.coroutines.core)
             }
         }
-        val iosMain by creating {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(projects.core)
-            }
-        }
         val androidMain by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -88,9 +82,14 @@ kotlin {
                 implementation(libs.compose.foundation)
                 implementation(libs.compose.material3)
                 implementation(libs.compose.ui)
-                implementation(libs.compose.uiToolingPreview)
                 implementation(libs.androidx.lifecycle.viewmodelCompose)
                 implementation(libs.androidx.lifecycle.runtimeCompose)
+            }
+        }
+        val iosMain by creating {
+            dependsOn(uiMain)
+            dependencies {
+                implementation(projects.core)
             }
         }
 
@@ -102,6 +101,7 @@ kotlin {
         wasmJsMain.dependsOn(uiMain)
 
         androidMain.dependencies {
+            implementation(libs.compose.ui)
             implementation(libs.compose.uiToolingPreview)
         }
         commonTest.dependencies {
