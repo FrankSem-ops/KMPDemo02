@@ -65,7 +65,6 @@ kotlin {
             dependencies {
                 api(projects.core)
                 implementation(libs.compose.runtime)
-                implementation(libs.compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
             }
         }
@@ -85,6 +84,7 @@ kotlin {
             dependsOn(commonMain)
             dependencies {
                 implementation(projects.core)
+                implementation(libs.compose.components.resources)
                 implementation(libs.compose.foundation)
                 implementation(libs.compose.material3)
                 implementation(libs.compose.ui)
