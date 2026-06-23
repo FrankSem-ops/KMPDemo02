@@ -1,12 +1,12 @@
 package com.sem.kmp01
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import com.sem.kmp01.feature.ElementLibraryDialogScreen
+import com.frank.anim.ui.AppNavigation
+import com.frank.anim.ui.theme.AnimationDemoTheme
 
 @Composable
 fun App() {
-    MaterialTheme {
-        ElementLibraryDialogScreen()
+    AnimationDemoTheme {
+        AppNavigation()
     }
 }
