@@ -26,7 +26,9 @@ import com.sem.kmp01.component.ElementLibraryDialog
 
 @Composable
 fun ElementLibraryDialogScreen() {
+
     var doNotRemindAgain by remember { mutableStateOf(false) }
+
     var latestActionText by remember { mutableStateOf("还没有执行任何操作") }
 
     Box(

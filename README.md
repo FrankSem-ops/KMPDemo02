@@ -24,7 +24,8 @@ Use the run configurations provided by the run widget in your IDE's toolbar. You
 
 - Android app: `./gradlew :app:androidApp:assembleDebug`
 - Desktop app:
-  - Hot reload: `./gradlew :app:desktopApp:hotRun --auto`
+  - Hot reload: `./gradlew :app:desktopApp:hotRun`
+  - Trigger a manual refresh from another terminal after edits: `./gradlew :app:desktopApp:reload`
   - Standard run: `./gradlew :app:desktopApp:run`
 - Server: `./gradlew :server:run`
 - Web app:

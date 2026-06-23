@@ -6,7 +6,8 @@ import androidx.compose.ui.window.application
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "KMP 演示",
+        alwaysOnTop = true,
+        title = "KMP 演示"
     ) {
         App()
     }
